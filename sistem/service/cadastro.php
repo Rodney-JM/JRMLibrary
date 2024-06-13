@@ -1,6 +1,6 @@
 <?php
 
-require 'Connection.php';
+require '../models/Connection.php';
 
 $user_name = $_POST['nome'];
 $user_email = $_POST['email'];
@@ -8,7 +8,7 @@ $user_password = $_POST['senha'];
 
 $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
 
-$pdo = Connection::connect('settings.ini'); 
+$pdo = Connection::connect('../settings.ini'); 
 
 $sql = "SELECT * FROM usuarios WHERE email = :email";
 $query = $pdo->prepare($sql);
