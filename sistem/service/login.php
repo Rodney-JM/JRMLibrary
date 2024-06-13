@@ -7,26 +7,27 @@ $user_password = $_POST['senha'];
 
 $pdo = Connection::connect('settings.ini');
 
-$sql = "SELECT * FROM usuarios WHERE email = :email AND senha = :senha";
-
+$sql = "SELECT * FROM usuarios WHERE email = :email";
 $stmt = $pdo->prepare($sql);
+$stmt->execute([':email' => $user_email]);
 
-$linesMod = $stmt->execute([
-    ':email'=>$user_email,
-    ':senha'=>$user_password
-]);
+$user = $stmt->fetchAll();
 
-$matrizUser = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+if ($user) {
+    if (password_verify($user_password, $user[0]['senha'])) {
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+        $_SESSION["id"] = $user[0]["id"];
+        $_SESSION["email"] = $user[0]["email"];
 
-var_dump($matrizUser);
-
-if(count($matrizUser)=="1"){
-    if(!isset($_SESSION)){
-        session_start();
+        header("Location: http://jrmlibrary.test/painel.html");
+        exit();
+    } else {
+        header("Location: http://jrmlibrary.test/index.html?errorMessage=wrongPassword");
+        exit();
     }
-
-    $_SESSION["id"] = $matrizUser[0]["id"];
-    $_SESSION["email"] = $matrizUser[0]["email"];
-
-    header("Location: http://jrmlibrary-main.test/painel.html");
+} else {
+    header("Location: http://jrmlibrary.test/index.html?errorMessage=emailNotFound");
+    exit();
 }

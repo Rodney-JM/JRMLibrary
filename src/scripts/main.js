@@ -16,3 +16,16 @@ function verifyPasswordConfirmation(event) {
     }
 }
 btn.addEventListener('click', verifyPasswordConfirmation);
+
+document.addEventListener("DOMContentLoaded", ()=> {
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorMessage = urlParams.get('errorMessage');
+
+    if (errorMessage) {
+        const errorDiv = document.getElementById('error-message');
+        if (errorMessage === 'cdtEx') {
+            errorDiv.textContent = 'O email fornecido já está cadastrado.';
+            errorDiv.style.display = 'block';
+        }
+    }
+});
