@@ -1,4 +1,4 @@
-<?php
+<span?php
     session_start();
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
         header("Location: http://jrmlibrary.test/");
@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Palanquin:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="src/styles/home_page.css">
+    <link rel="stylesheet" href="src/styles/home/home_main.css">
 </head>
 <body>
     <header>
@@ -31,12 +31,32 @@
                 <h3>FrancisComic</h3>
             </div>
             <ul>
-                <li><i class="fa-solid fa-house"></i>Início</li>
-                <li><i class="fa-solid fa-book"></i>Meus livros</li>
-                <li><i class="fa-solid fa-user"></i>Sair</li>
+                <a href="#"><li><i class="fa-solid fa-house"></i>Início</li></a>
+                <a href="meus_livros.php"><li><i class="fa-solid fa-book"></i>Meus livros</li></a>
+                <a href="index.php"><li><i class="fa-solid fa-user"></i>Sair</li></a>
             </ul>
         </nav>
     </header>
+    <main class="home_main">
+        <section class="image_container">
+            <img src="/src/assets/images/bookstore.svg" alt="Bookstore image" class="bookstore_image">
+        </section>
+        <section class="text_container">
+            <div class="logo">
+                <img src="/src/assets/icons/OIG3.jpg" alt="">
+                <h2>Francis<span>Comic</span></h2>
+            </div>
+            
+            <p>FrancisComic é uma plataforma online projetada para simplificar a gestão de bibliotecas pessoais e coleções de livros. Com uma interface intuitiva e amigável, os usuários <br>podem facilmente adicionar novos livros à sua biblioteca, atualizar informações como status de leitura ou classificação, e até mesmo excluir títulos quando necessário.</p>
+            <ul class="medias">
+                <a href="https://github.com/Rodney-JM" target="_blank"><li><i class="fa-brands fa-github"></i></li></a>
+                <a href="https://www.linkedin.com/in/rondiney-patr%C3%ADcio-258234298/" target="_blank"><li><i class="fa-brands fa-linkedin-in"></i></li></a>
+                <a href="" target="_blank"><li><i class="fa-brands fa-instagram"></i></li></a>
+            </ul>
+
+            <a href="meus_livros.php" class="start_button">Começar agora</a>
+        </section>
+    </main>
     
 </body>
 </html>

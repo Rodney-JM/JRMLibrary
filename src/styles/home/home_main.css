@@ -1,0 +1,105 @@
+@import url(../reset.css);
+@import url(../navbar.css);
+
+.home_main{
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 2rem;
+    
+    background-color: var(--bg-color2);
+}
+
+.image_container{
+    width: 50%;
+}
+
+.bookstore_image{
+    width: 80%;
+}
+
+.text_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+
+    width: 50%;
+    padding: 0 1rem;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+.text_container .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .8rem;
+}
+
+.text_container .logo img{
+    width: 10%;
+
+    border-radius: 50%;
+    margin-right: .5rem;
+}
+
+.text_container .logo h2{
+    font-size: 3rem;
+}
+
+.text_container .logo span{
+    color: var(--text-hover-color);
+}
+
+.text_container p{
+    margin-top: .8rem;
+    text-align: center;
+    font-size: 1.2rem;
+    width: 80%;
+    font-family: "Palanquin", sans-serif;
+    line-height: 1.6rem;
+}
+
+.medias{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    font-size: 1.5rem;
+    padding: 1.5rem 0;
+}
+
+.medias a{
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+.medias a:hover{
+    color: var(--text-hover-color);
+    transform: translateY(-2px);
+}
+
+.start_button{
+    background-color: var(--text-hover-color);
+    margin-top: .8rem;
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    border-radius: .5rem;
+    color: var(--text-color);
+    font-weight: 500;
+
+    transition: all 0.2s ease;
+}
+
+.start_button:hover{
+    background-color: #9f5b56;
+}
+
+.start_button:active{
+    background-color: #81504c;
+}
