@@ -27,13 +27,13 @@
                 </div>
                 <div class="input_container">
                     <label for="password">Senha</label>
-                    <i class="fa-solid fa-key"></i><input type="password" name="senha" id="password" placeholder="Crie sua senha" required>
+                    <i class="fa-solid fa-key"></i><input type="password" name="senha" id="password" placeholder="Insira sua senha" required>
                 </div>
                 <button type="submit">Entrar</button>
                 <div id="error-message" style="display: none; color: rgb(255, 26, 26); font-family: Montserrat, sans-serif; text-wrap: wrap; text-align: center;"></div>
             </form>
             <p>ou</p>
-            <a href="cadastro.html" class="jconta">Não tem uma conta? Cadastre-se</a>
+            <a href="cadastro.php" class="jconta">Não tem uma conta? Cadastre-se</a>
         </section>
         <section class="image_section">
             <img src="./src/assets/images/bg2.jpg" alt="Background Japan Landscape">

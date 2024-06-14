@@ -1,8 +1,11 @@
-@import url(reset.css);
+@import url(../reset.css);
 @import url(/src/styles/navbar/navbar.css);
 
-main{
+body{
     background-color: var(--bg-color2);
+}
+
+main{
     height: 100vh;
     color: var(--text-color);
     z-index: 1;
@@ -112,7 +115,6 @@ main{
 .form_container button:active{
     background-color: black;
 }
-
 .active{
     display: none;
 }
@@ -153,31 +155,79 @@ main{
     background-color: #81504c;
 }
 
-.table{
+.table {
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-top: 2rem;
+    width: 90%;
+    padding: 0 6%;
 
     font-family: "Palanquin", sans-serif;
 }
 
-.table table .cab{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    gap: 10%;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.table table .cab th{
+thead, tbody {
+    display: block;
+}
+
+.cab {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+tr{
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+th, td {
     line-height: 1.1rem;
-
     background-color: var(--bg-color1);
-    padding: .5rem 10%;
+    padding: .5rem;
     border-radius: .2rem;
+    text-align: center;
+}
 
-    height: 10%;
-    width: 100%;
+th {
+    background-color: var(--bg-color1);
+    font-weight: bold;
+}
+
+td {
+    background-color: var(--bg-color1);
+}
+
+.acoes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    cursor: pointer;
+}
+
+.fa-pen-nib, .fa-trash{
+    transition: all 0.2s ease;
+}
+
+.fa-pen-nib:hover{
+    transform: translateY(-2px);
+    color: var(--text-color2);
+}
+
+.fa-trash:hover{
+    transform: translateY(-2px);
+    color: rgb(255, 101, 101);
 }

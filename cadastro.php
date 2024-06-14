@@ -41,7 +41,7 @@
                 <div id="error-message" style="display: none; color: rgb(255, 26, 26); font-family: Montserrat, sans-serif;"></div>
             </form>
             <p>ou</p>
-            <a href="index.html" class="jconta">Já tem uma conta? Entre</a>
+            <a href="index.php" class="jconta">Já tem uma conta? Entre</a>
         </section>
         <section class="image_section">
             <img src="./src/assets/images/bg2.jpg" alt="Background Japan Landscape">

@@ -1,3 +1,25 @@
+<?php
+// Início do script PHP
+require './sistem/models/Connection.php';
+
+try {
+    $pdo = Connection::connect('./sistem/settings.ini');
+
+    $sql = "SELECT autor, titulo, subtitulo, edicao, editora, ano_publicacao, capa_livro FROM livros";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($books === false) {
+        $books = [];
+    }
+} catch (Exception $e) {
+    echo 'Erro ao buscar dados: ' . $e->getMessage();
+    $books = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +35,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Palanquin:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="src/styles/meus_livros.css">
+    <link rel="stylesheet" href="src/styles/meus_livros/meus_livros.css">
 </head>
 <body>
     <header>
@@ -71,7 +93,7 @@
                     </div>
                     <div class="input_container">
                         <label for="capa_livro">Capa do livro(opcional)</label>
-                        <input type="file" name="capa_livro" id="ano_publicacao" placeholder="Arquivo da capa">
+                        <input type="number" name="capa_livro" id="ano_publicacao" placeholder="Arquivo da capa">
                     </div>
                     <button type="submit">Registrar</button>
                 </form>
@@ -81,19 +103,35 @@
         </section>
         <section class="table">
             <table>
-                <tr class="cab">
-                    <th>Autor</th>
-                    <th>Título</th>
-                    <th>Subtítulo</th>
-                    <th>Edição</th>
-                    <th>Editora</th>
-                    <th>Ano</th>
-                    <th>Capa</th>
-                    <th>Ação</th>
-                </tr>
-                <tr class="livros_cab">
-
-                </tr>
+                <thead>
+                    <tr class="cab">
+                        <th>Autor</th>
+                        <th>Título</th>
+                        <th>Subtítulo</th>
+                        <th>Edição</th>
+                        <th>Editora</th>
+                        <th>Ano</th>
+                        <th>Capa</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <?php foreach ($books as $book): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($book['autor']); ?></td>
+                        <td><?php echo htmlspecialchars($book['titulo']); ?></td>
+                        <td><?php echo htmlspecialchars($book['subtitulo']); ?></td>
+                        <td><?php echo htmlspecialchars($book['edicao']); ?></td>
+                        <td><?php echo htmlspecialchars($book['editora']); ?></td>
+                        <td><?php echo htmlspecialchars($book['ano_publicacao']); ?></td>
+                        <td><?php echo htmlspecialchars($book['capa_livro']); ?></td>
+                        <td class="acoes">
+                            <i class="fa-solid fa-pen-nib"></i>
+                            <i class="fa-solid fa-trash"></i>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>    
             </table>
         </section>
     </main>
