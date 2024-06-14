@@ -1,0 +1,183 @@
+@import url(reset.css);
+@import url(/src/styles/navbar/navbar.css);
+
+main{
+    background-color: var(--bg-color2);
+    height: 100vh;
+    color: var(--text-color);
+    z-index: 1;
+}
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+.topic{
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    padding: 1rem 0;
+}
+
+.form_container{
+    position: absolute;
+    width: 50%;
+    height: 92vh;
+    background: radial-gradient(var(--text-color), rgb(232, 232, 232));
+    border-radius: .3rem;
+    border: 1px solid var(--bg-color1);
+    top: 8%;
+}
+
+.fa-circle-xmark{
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    color: rgb(255, 62, 62);
+    cursor: pointer;
+    font-size: 2rem;
+    transition: all 0.2s ease;
+}
+
+.fa-circle-xmark:hover{
+    color: rgb(239, 59, 59);
+}
+
+.fa-circle-xmark:active{
+    color: rgb(212, 54, 54);
+}
+
+.form_container h3, p{
+    color: var(--bg-color1);
+    text-align: center;
+    padding: .6rem 0;
+}
+
+.form_container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    gap: .8rem;
+
+    padding: .5rem 0;
+
+    color: var(--bg-color1);
+}
+
+.input_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.input_container label{
+    text-align: start;
+    font-family: "Palanquin", sans-serif;
+}
+
+.input_container input{
+    outline: none;
+    width: 30vw;
+    padding: .6rem 1.5rem;
+    border: 1px solid #0D0000;
+    border-radius: 1rem;
+}
+
+.form_container button{
+    background-color: var(--bg-color1);
+    margin-top: .8rem;
+    padding: .8rem 2.5rem;
+
+    text-decoration: none;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form_container button:hover{
+    background-color: rgb(20, 20, 20);
+}
+
+.form_container button:active{
+    background-color: black;
+}
+
+.active{
+    display: none;
+}
+
+#btnAdd{
+    background-color: var(--text-hover-color);
+    margin-top: .8rem;
+    padding: .5rem 2.5rem;
+    
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+
+    outline: none;
+    border-radius: .2rem;
+    border: none;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btnAdd i{
+    cursor: pointer;
+}
+
+#btnAdd:hover{
+    background-color: #9f5b56;
+}
+
+#btnAdd:active{
+    background-color: #81504c;
+}
+
+.table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 2rem;
+
+    font-family: "Palanquin", sans-serif;
+}
+
+.table table .cab{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10%;
+}
+
+.table table .cab th{
+    line-height: 1.1rem;
+
+    background-color: var(--bg-color1);
+    padding: .5rem 10%;
+    border-radius: .2rem;
+
+    height: 10%;
+    width: 100%;
+}
