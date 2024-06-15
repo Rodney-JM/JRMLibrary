@@ -1,4 +1,4 @@
-@import url(../reset.css);
+@import url(reset.css);
 @import url(/src/styles/navbar/navbar.css);
 
 body{
@@ -219,12 +219,13 @@ td {
 }
 
 .fa-pen-nib, .fa-trash{
+    color: var(--text-color);
     transition: all 0.2s ease;
 }
 
 .fa-pen-nib:hover{
     transform: translateY(-2px);
-    color: var(--text-color2);
+    color: rgb(53, 53, 255);
 }
 
 .fa-trash:hover{
