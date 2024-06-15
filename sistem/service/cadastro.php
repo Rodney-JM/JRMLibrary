@@ -16,7 +16,7 @@ $query->execute([":email" => $user_email]);
 $count = $query->fetchColumn();
 
 if ($count > 0) {
-    header("Location: http://jrmlibrary.test/cadastro.html?errorMessage=cdtEx");
+    header("Location: http://jrmlibrary.test/cadastro.php?errorMessage=cdtEx");
     exit();
 } else {
     $sql = "INSERT INTO usuarios(nome, email, senha) VALUES(:nome, :email, :senha)";
@@ -29,6 +29,6 @@ if ($count > 0) {
         ]
     );
 
-    header("Location: http://jrmlibrary.test/index.html");
+    header("Location: http://jrmlibrary.test/index.php");
     exit();
 }

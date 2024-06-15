@@ -1,6 +1,6 @@
 <?php
-
 require '../models/Connection.php';
+session_start();
 
 if (isset($_POST['autor'], $_POST['titulo'], $_POST['subtitulo'], $_POST['edicao'], $_POST['editora'], $_POST['ano_publicacao'])) {
     $book_author = $_POST['autor'];
@@ -10,6 +10,7 @@ if (isset($_POST['autor'], $_POST['titulo'], $_POST['subtitulo'], $_POST['edicao
     $book_pub = $_POST['editora'];
     $book_year = $_POST['ano_publicacao'];
     $book_cover = $_POST['capa_livro'];
+    $user_id = $_SESSION['id'];
 
     try {
         $pdo = Connection::connect('../settings.ini');
@@ -18,16 +19,29 @@ if (isset($_POST['autor'], $_POST['titulo'], $_POST['subtitulo'], $_POST['edicao
         if (isset($_GET['id']) && filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
             $id = $_GET['id'];
 
-            $sql = "UPDATE livros SET autor = :autor, titulo = :titulo, subtitulo = :subtitulo, edicao = :edicao, editora = :editora, ano_publicacao = :ano_publicacao, capa_livro = :capa WHERE id = :id";
+            // Seleciona o livro específico
+            $sql = "SELECT usuario FROM livros WHERE id = :id";
             $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":autor", $book_author);
-            $stmt->bindParam(":titulo", $book_title);
-            $stmt->bindParam(":subtitulo", $book_subtitle);
-            $stmt->bindParam(":edicao", $book_edition);
-            $stmt->bindParam(":editora", $book_pub);
-            $stmt->bindParam(":ano_publicacao", $book_year);
-            $stmt->bindParam(":capa", $book_cover);
-            $stmt->bindParam(":id", $id, PDO::PARAM_INT); // Especifica que é um inteiro
+            $stmt->execute([":id" => $id]);
+            $book = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verifica se o livro pertence ao usuário atual
+            if ($book && $book['usuario'] == $user_id) {
+                $sql = "UPDATE livros SET autor = :autor, titulo = :titulo, subtitulo = :subtitulo, edicao = :edicao, editora = :editora, ano_publicacao = :ano_publicacao, capa_livro = :capa WHERE id = :id";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindParam(":autor", $book_author);
+                $stmt->bindParam(":titulo", $book_title);
+                $stmt->bindParam(":subtitulo", $book_subtitle);
+                $stmt->bindParam(":edicao", $book_edition);
+                $stmt->bindParam(":editora", $book_pub);
+                $stmt->bindParam(":ano_publicacao", $book_year);
+                $stmt->bindParam(":capa", $book_cover);
+                $stmt->bindParam(":id", $id, PDO::PARAM_INT); // Especifica que é um inteiro
+            } else {
+                // Se o livro não pertence ao usuário, redireciona com mensagem de erro
+                header("Location: http://jrmlibrary.test/meus_livros.php?errorMessage=cantModifieOtherBooks");
+                exit();
+            }
 
         } else {
             // Inserção de um novo livro
@@ -40,7 +54,7 @@ if (isset($_POST['autor'], $_POST['titulo'], $_POST['subtitulo'], $_POST['edicao
             $stmt->bindParam(":editora", $book_pub);
             $stmt->bindParam(":ano_publicacao", $book_year);
             $stmt->bindParam(":capa", $book_cover);
-            $stmt->bindParam(":usuario", $_SESSION['id'], PDO::PARAM_INT);
+            $stmt->bindParam(":usuario", $user_id, PDO::PARAM_INT);
         }
 
         $stmt->execute();
