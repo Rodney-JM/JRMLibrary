@@ -196,6 +196,6 @@ try {
         </section>
     </main>
 
-    <script src="src/scripts/meus_livros.js"></script>
+    <script src="/src/scripts/painel/meus_livros.js"></script>
 </body>
 </html>

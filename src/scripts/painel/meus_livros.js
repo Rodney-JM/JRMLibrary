@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formContainer.classList.add('active');
     }
 
-    if (addBtn && formContainer && exitButton && editBtns.length > 0) {
+    if (addBtn && formContainer && exitButton && editBtns.length >= 0) {
         addBtn.addEventListener('click', activateFormContainer);
 
         exitButton.addEventListener('click', deactivateFormContainer);
