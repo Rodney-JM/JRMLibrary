@@ -1,4 +1,4 @@
-<span?php
+<?php
     session_start();
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
         header("Location: http://jrmlibrary.test/");
@@ -26,6 +26,10 @@
 <body>
     <header>
         <nav class="navbar">
+            <div class="user_name" style="display:flex; justify-content:center; align-items:center; gap:.5rem;font-family:'Montserrat'">
+                <i class="fa-solid fa-user"></i>
+                <h3><?php echo $_SESSION["nome"];?></h3>
+            </div>
             <div class="logo_container">
                 <img src="/src/assets/icons/OIG3.png" alt="Logo imagem">
                 <h3>FrancisComic</h3>
@@ -33,7 +37,7 @@
             <ul>
                 <a href="#"><li><i class="fa-solid fa-house"></i>Início</li></a>
                 <a href="meus_livros.php"><li><i class="fa-solid fa-book"></i>Meus livros</li></a>
-                <a href="index.php"><li><i class="fa-solid fa-user"></i>Sair</li></a>
+                <a href="index.php?session=destroy"><li><i class="fa-solid fa-user"></i>Sair</li></a>
             </ul>
         </nav>
     </header>

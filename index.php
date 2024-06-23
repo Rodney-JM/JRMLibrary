@@ -1,3 +1,12 @@
+<?php
+    if(isset($_GET['session'])=="destroy"){
+        session_start();
+        session_destroy();
+
+        header("Location: http://jrmlibrary.test/index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

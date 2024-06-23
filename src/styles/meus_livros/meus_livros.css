@@ -1,42 +1,42 @@
-@import url(reset.css);
-@import url(/src/styles/navbar/navbar.css);
+@import url(../reset.css);
+@import url(../navbar.css);
 
-body{
+body {
     background-color: var(--bg-color2);
 }
 
-main{
+main {
     height: 100vh;
     color: var(--text-color);
     z-index: 1;
 }
 
-.title{
+.title {
     display: flex;
     align-items: center;
     justify-content: space-around;
-
     font-family: "Montserrat", sans-serif;
 }
 
-.topic{
+.topic {
     display: flex;
     align-items: center;
     gap: .8rem;
     padding: 1rem 0;
 }
 
-.form_container{
+.form_container {
     position: absolute;
     width: 50%;
     height: 92vh;
     background: radial-gradient(var(--text-color), rgb(232, 232, 232));
     border-radius: .3rem;
     border: 1px solid var(--bg-color1);
-    top: 8%;
+    top: 6%;
+    z-index: 10;
 }
 
-.fa-circle-xmark{
+.fa-circle-xmark {
     position: absolute;
     right: -7px;
     top: -7px;
@@ -46,43 +46,42 @@ main{
     transition: all 0.2s ease;
 }
 
-.fa-circle-xmark:hover{
+.fa-circle-xmark:hover {
     color: rgb(239, 59, 59);
 }
 
-.fa-circle-xmark:active{
+.fa-circle-xmark:active {
     color: rgb(212, 54, 54);
 }
 
-.form_container h3, p{
+.form_container h3,
+.form_container p {
     color: var(--bg-color1);
     text-align: center;
     padding: .6rem 0;
 }
 
-.form_container form{
+.form_container form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     gap: .8rem;
-
     padding: .5rem 0;
-
     color: var(--bg-color1);
 }
 
-.input_container{
+.input_container {
     display: flex;
     flex-direction: column;
 }
 
-.input_container label{
+.input_container label {
     text-align: start;
     font-family: "Palanquin", sans-serif;
 }
 
-.input_container input{
+.input_container input {
     outline: none;
     width: 30vw;
     padding: .6rem 1.5rem;
@@ -90,145 +89,171 @@ main{
     border-radius: 1rem;
 }
 
-.form_container button{
+.form_container button {
     background-color: var(--bg-color1);
     margin-top: .8rem;
     padding: .8rem 2.5rem;
-
     text-decoration: none;
     border-radius: .5rem;
     border: none;
     outline: none;
-
     color: var(--text-color);
     font-weight: 500;
     font-size: 1rem;
-
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-.form_container button:hover{
+.form_container button:hover {
     background-color: rgb(20, 20, 20);
 }
 
-.form_container button:active{
+.form_container button:active {
     background-color: black;
 }
-.active{
+
+.active {
     display: none;
 }
 
-#btnAdd{
+#btnAdd {
     background-color: var(--text-hover-color);
     margin-top: .8rem;
     padding: .5rem 2.5rem;
-    
     display: flex;
     gap: .4rem;
     align-items: center;
     justify-content: center;
-
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
-
     outline: none;
     border-radius: .2rem;
     border: none;
-
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
-#btnAdd i{
+#btnAdd i {
     cursor: pointer;
 }
 
-#btnAdd:hover{
+#btnAdd:hover {
     background-color: #9f5b56;
 }
 
-#btnAdd:active{
+#btnAdd:active {
     background-color: #81504c;
 }
 
 .table {
+    margin-top: 2%;
+    max-width: 100%;
+    padding: 0 2%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 2rem;
-    width: 90%;
-    padding: 0 6%;
-
-    font-family: "Palanquin", sans-serif;
 }
 
-table {
+.table_elements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 auto;
+    gap: 8%;
+}
+
+.element {
+    position: relative;
+    height: 19rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    gap: .2rem;
+    background-color: var(--bg-color2);
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+    border: 1px solid grey;
+}
+
+.element p {
+    color: var(--text-color);
+}
+
+.element img {
+    width: 50%;
+    height: 17rem;
+    border-radius: .5rem;
+    background-size: cover;
+}
+
+.content_area {
+    height: 90%;
     width: 100%;
-    border-collapse: collapse;
-}
-
-thead, tbody {
-    display: block;
-}
-
-.cab {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     gap: 1rem;
-    margin-bottom: 1rem;
+    padding-left: .5rem;
+    font-family: "Palanquin", sans-serif;
+    font-size: 1rem;
+    line-height: 1.2rem;
 }
 
-tr{
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+.content_area p {
+    margin: 0;
 }
 
-th, td {
-    line-height: 1.1rem;
-    background-color: var(--bg-color1);
-    padding: .5rem;
-    border-radius: .2rem;
-    text-align: center;
+.content_area p span {
+    color: rgb(134, 134, 134);
 }
 
-th {
-    background-color: var(--bg-color1);
-    font-weight: bold;
-}
-
-td {
-    background-color: var(--bg-color1);
-}
-
-.acoes{
+.acoes {
+    position: absolute;
+    top: -.6rem;
+    right: -1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 2rem;
     cursor: pointer;
+    background-color: var(--text-color);
+    padding: .3rem 1rem;
+    border-radius: .8rem;
 }
 
-.fa-pen-nib, .fa-trash{
+.acoes i {
+    color: #000;
+}
+
+.fa-pen-nib,
+.fa-trash {
     color: var(--text-color);
     transition: all 0.2s ease;
 }
 
-.fa-pen-nib:hover{
+.fa-pen-nib:hover {
     transform: translateY(-2px);
     color: rgb(53, 53, 255);
 }
 
-.fa-trash:hover{
+.fa-trash:hover {
     transform: translateY(-2px);
     color: rgb(255, 101, 101);
+}
+
+.element div .user{
+    position: absolute;
+    bottom: -1rem;
+    right: -.5rem;
+
+    padding: .5rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: .8rem;
+    font-weight: 600;
+
+    background-color: var(--text-color);
+    color: var(--bg-color1);
+    border-radius: .3rem;
 }

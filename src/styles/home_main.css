@@ -1,5 +1,5 @@
 @import url(reset.css);
-@import url(/src/styles/navbar/navbar.css);
+@import url(navbar.css);
 
 .home_main{
     height: 100vh;

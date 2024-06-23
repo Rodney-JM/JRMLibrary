@@ -20,6 +20,7 @@ if ($user) {
         $_SESSION['loggedin'] = true;
         $_SESSION["id"] = $user[0]["id"];
         $_SESSION["email"] = $user[0]["email"];
+        $_SESSION["nome"] = $user[0]["nome"];
 
         header("Location: http://jrmlibrary.test/painel.php");
         exit();
