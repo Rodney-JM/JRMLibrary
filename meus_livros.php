@@ -214,7 +214,7 @@ try {
                                 <p><span>Subtítulo: </span><?php echo htmlspecialchars($book['subtitulo']); ?></p>
                                 <p><span>Edição: </span><?php echo htmlspecialchars($book['edicao']); ?></p>
                                 <p><span>Editora: </span><?php echo htmlspecialchars($book['editora']); ?></p>
-                                <p><span>Data: </span><?php htmlspecialchars($book['ano_publicacao']); ?></p>
+                                <p><span>Data: </span><?php echo htmlspecialchars($book['ano_publicacao']); ?></p>
                             </div>
 
                             <div class="acoes">
