@@ -8,14 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formContainer.classList.remove('active');
     }
 
-    function deactivateFormContainer() {
-        formContainer.classList.add('active');
-    }
-
     if (addBtn && formContainer && exitButton && editBtns.length >= 0) {
         addBtn.addEventListener('click', activateFormContainer);
-
-        exitButton.addEventListener('click', deactivateFormContainer);
     } else {
         console.error("Um ou mais elementos não foram encontrados.");
     }

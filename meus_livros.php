@@ -3,13 +3,11 @@ require './sistem/models/Connection.php';
 
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: http://jrmlibrary.test/");
     exit();
 }
 
-// Conexão com o banco de dados
 try {
     $pdo = Connection::connect('./sistem/settings.ini');
 
@@ -115,7 +113,7 @@ try {
 
             <div class="form_container active">
             <?php if (isset($book) && isset($_GET['id'])):?>
-                <i class="fa-solid fa-circle-xmark"></i>
+                <a href="meus_livros.php"><i class="fa-solid fa-circle-xmark"></i></a>
                 <h3>Editar informações do livro</h3>
                 <form action="/sistem/service/cadastro_livro.php?id=<?= htmlspecialchars($book['id']);?>" method="post" enctype="multipart/form-data">
                     <div class="input_container">
@@ -155,7 +153,7 @@ try {
                     <button type="submit">Atualizar</button>
                 </form>
             <?php else:?>
-                <i class="fa-solid fa-circle-xmark"></i>
+                <a href="meus_livros.php"><i class="fa-solid fa-circle-xmark"></i></a>
                 <h3>Insira as informações do livro</h3>
                 <form action="/sistem/service/cadastro_livro.php" method="post" enctype="multipart/form-data">
                     <div class="input_container">
@@ -216,7 +214,7 @@ try {
                                 <p><span>Subtítulo: </span><?php echo htmlspecialchars($book['subtitulo']); ?></p>
                                 <p><span>Edição: </span><?php echo htmlspecialchars($book['edicao']); ?></p>
                                 <p><span>Editora: </span><?php echo htmlspecialchars($book['editora']); ?></p>
-                                <p><span>Data: </span><?php echo htmlspecialchars($book['ano_publicacao']); ?></p>
+                                <p><span>Data: </span><?php htmlspecialchars($book['ano_publicacao']); ?></p>
                             </div>
 
                             <div class="acoes">
